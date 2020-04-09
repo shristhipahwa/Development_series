@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  {% block title %}
+  {% endblock %}
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'ME/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'ME/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'ME/lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'ME/lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'ME/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'ME/lib/lightbox\css/lightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'ME/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+      <!--/ Nav Star /-->
+      <nav {% block navbar_specific %} {% endblock %}>
+        <div class="container">
+          <a class="navbar-brand js-scroll" href="{% url 'home-page' %}">Akshit Goel</a>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+            aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+              <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+
+                  {% block navbar_list_of_routes %}
+                  {% endblock %}
+
+              </div>
+        </div>
+      </nav>
+      <!-- Flash Messages starts  -->
+                            <div class="container">
+                              <div class="row">
+                                    <div class="col-md-12">
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                          <div class="alert alert-{{ message.tags }}">
+                                                {{ message }}
+                                          </div>
+                                         {% endfor %}
+                                    {% endif %}
+                                  </div>
+                                </div>
+                              </div>
+                   <!-- Flash messages ends -->
+  <!--/ Nav End /-->
+
+      <!--/ Intro Skew Star /-->
+
+                  {% block Intro_Skew %}
+
+                  {% endblock %}
+
+      <!--/ Intro Skew End /-->
+
+                  <!-- About leterpad starts -->
+                              {% block About_Postcard %}
+
+                              {% endblock %}
+                  <!-- About leterpad Ends -->
+
+                                        <!--/ Section Contact-Footer Star /-->
+                                                  {% block Contact-Footer %}
+
+                                                  {% endblock %}
+                                        <!--/ Section Contact-footer End /-->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'ME/lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'ME/lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'ME/lib/popper/popper.min.js' %}"></script>
+  <script src="{% static 'ME/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'ME/lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'ME/lib/counterup/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'ME/lib/counterup/jquery.counterup.js' %}"></script>
+  <script src="{% static 'ME/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'ME/lib/lightbox/js/lightbox.min.js' %}"></script>
+  <script src="{% static 'ME/lib/typed/typed.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'ME/contactform/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'ME/js/main.js' %}"></script>
+
+</body>
+</html>

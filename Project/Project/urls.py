@@ -15,10 +15,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.urls import include
 
+#-----------------------------------------------------
+from django.contrib.auth import views as auth_views
+from django.urls import include
+from user import views as user_view
+from django.conf import settings
+from django.conf.urls.static import static
+#-----------------------------------------------------
 urlpatterns = [
 
+    path('login/', auth_views.LoginView.as_view(template_name='login/login.html'), name='login-page'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='logout/logout.html'), name='logout-page'),
+    path('blog/', include('blog.urls')),
+    path('register/', include('user.urls')),
+    path('profile/', user_view.profile, name='profile-page'),
     path('', include('ME.urls')),
     path('admin/', admin.site.urls),
 ]
+
+#THIS NEED TO BE CHANGE WHEN DEPLOYING (READ deploying static url)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

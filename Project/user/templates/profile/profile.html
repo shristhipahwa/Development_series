@@ -1,0 +1,91 @@
+{% extends 'ME/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!-- title starts -->
+          {% block title %}
+          <title>Profile-{{ user.username }}</title>
+          {% endblock title %}
+<!-- titile ends -->
+
+<!-- navbar starts -->
+        {% block navbar_specific %}
+               class="navbar navbar-c navbar-trans navbar-expand-md fixed-top" id="mainNav"
+          {% endblock %}
+
+        {% block navbar_list_of_routes %}
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link js-scroll active" href="{% url 'home-page' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll active" href="{% url 'blog-page' %}">Blog</a>
+                    </li>
+                      {% if user.is_authenticated %}
+                      <li class="nav-item">
+                        <a class="nav-link js-scroll active" href="{% url 'logout-page' %}">Logout</a>
+                      </li>
+                    {% else %}
+                      <li class="nav-item">
+                        <a class="nav-link js-scroll active" href="{% url 'login-page' %}">Login</a>
+                      </li>
+                    {% endif %}
+            </ul>
+      {% endblock %}
+
+<!-- About Postcars starts -->
+       {% block About_Postcard %}
+          <section id="about" class="about-mf sect-pt4 route">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="box-shadow-full">
+                <!-- row 1     -->
+                    <div class="row">
+                      <div class="col-md-4 frame">
+                              <img src="{{ user.profile.image.url }}" class="img-fluid img-thumbnail" alt=""><br><br>
+                         <!-- row 1.2 -->
+                              <div class="row">
+                                <div class="col-md-8 frame">
+                                  <div class="about-me pt-4 pt-md-0">
+                                    <div class="title-box-2">
+                                      <h5 class="title-left">
+                                        Profile
+                                      </h5>
+                                    </div>
+                                    <h5 class="font-italic">
+                                      {{ user.username }}
+                                    </h5>
+                                    <p class="font-weight-normal text-left">{{ user.email }}</p>
+                                  </div>
+                                </div>
+                              </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="title-box-2">
+                        <!-- Form starts -->
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                    <fieldset class="form-group">
+                                        <legend>Profile Info</legend>
+
+                                            {{ u_form|crispy }}
+                                            {{ p_form|crispy }}
+
+                                    </fieldset>
+                                    <div class="col-md-12">
+                                      <button type="submit" class="button button-a button-big button-rouded">Update</button>
+                                    </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                        <!-- form ends -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        {% endblock About_Postcard %}
+
+<!-- About Psotcard ends -->
