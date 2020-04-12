@@ -40,13 +40,13 @@
 <!-- nav bar ends -->
 
 <!-- About Postcars starts -->
-       {% block About_Postcard %}
+       {% block content %}
           <section id="about" class="about-mf sect-pt4 route">
             <div class="container">
               <div class="row">
                 <div class="col-md-8">
                   <div class="box-shadow-full">
-                      {% for post in posts%}
+                      {% for post in posts %}
                           <div class="row">
                             <div class="col-md-4 frame">
                               <div class="img"><img src="{{ post.author.profile.image.url }}" class="img-fluid img-thumbnail" alt=""></div>
@@ -79,6 +79,6 @@
             </div>
           </section>
 
-        {% endblock About_Postcard %}
+        {% endblock content %}
 
 <!-- About Psotcard ends -->

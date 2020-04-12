@@ -35,27 +35,30 @@
       {% endblock %}
 
 <!-- About Postcars starts -->
-       {% block About_Postcard %}
+       {% block content %}
           <section id="about" class="about-mf sect-pt4 route">
             <div class="container">
               <div class="row">
                 <div class="col-sm-12">
                   <div class="box-shadow-full">
-                <!-- row 1     -->
+                    <div class="container">
+                        {% include 'ME/messages.html' %}
+                        {% block messages %} {% endblock %}
+                     </div>
                     <div class="row">
                       <div class="col-md-4 frame">
-                              <img src="{{ user.profile.image.url }}" class="img-fluid img-thumbnail" alt=""><br><br>
-                              <div class="row">
-                                <div class="col-md-8 frame">
-                                  <div class="about-me pt-4 pt-md-0">
-                                    <div class="title-box-2">
-                                      <h5 class="title-left">Profile Info</h5>
-                                    </div>
-                                    <h5 class="font-italic">{{ user.username }}</h5>
-                                    <p class="font-weight-normal text-left">{{ user.email }}</p>
-                                  </div>
-                                </div>
+                        <img src="{{ user.profile.image.url }}" class="img-fluid img-thumbnail" alt=""><br><br>
+                         <div class="row">
+                          <div class="col-md-8 frame">
+                            <div class="about-me pt-4 pt-md-0">
+                              <div class="title-box-2">
+                                <h5 class="title-left">Profile Info</h5>
                               </div>
+                              <h5 class="font-italic">{{ user.username }}</h5>
+                              <p class="font-weight-normal text-left">{{ user.email }}</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       <div class="col-md-6">
                         <div class="title-box-2">
@@ -82,7 +85,7 @@
               </div>
             </div>
           </section>
-        {% endblock About_Postcard %}
+        {% endblock %}
 
 <!-- About Psotcard ends -->
 
