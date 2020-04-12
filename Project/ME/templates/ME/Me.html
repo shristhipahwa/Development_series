@@ -34,7 +34,7 @@
 
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link js-scroll active" href="{% url 'profile-page' %}">Profile</a>
+                  <a class="nav-link js-scroll active" href="{% url 'profile-page' %}">{{ user.username|capfirst }}</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link js-scroll active" href="{% url 'logout-page' %}">Logout</a>
@@ -115,30 +115,6 @@
 <!-- About Psotcard ends -->
 
 
-<!--/ Section Projetcs Start /-->
-<!--         {% block Projects %}
-          <section id="Projects" class="services-mf route">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="title-box text-center">
-                    <h3 class="title-a">
-                      Projects
-                    </h3>
-                    <p class="subtitle-a">
-                      Let The World Know You and Your Work.
-                    </p>
-                    <div class="line-mf"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-              </div>
-            </div>
-          </section>
-        {% endblock Projects %} -->
-<!--/ Section projects End /-->
-
 
 <!--/ Section Contact-Footer Star /-->
 
@@ -196,27 +172,8 @@
                 </div>
               </div>
             </div>
-            <footer>
-              <div class="container">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="copyright-box">
-                      <p class="copyright">&copy; Copyright <strong>AkshitGoel</strong>. All Rights Reserved</p>
-                      <div class="credits">
-                        <!--
-                          All the links in the footer should remain intact.
-                          You can delete the links only if you purchased the pro version.
-                          Licensing information: https://bootstrapmade.com/license/
-                          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=DevFolio
-                        -->
-                        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                        Modified by AG.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </footer>
+                  {% include 'ME/footer.html' %}
+                  {% block messages %} {% endblock %}
           </section>
         {% endblock %}
   <!--/ Section Contact-footer End /-->

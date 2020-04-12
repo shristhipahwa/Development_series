@@ -17,14 +17,11 @@
 
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link js-scroll active" href="{% url 'home-page' %}">Home</a>
+                <a class="nav-link js-scroll active" href="{% url 'blog-page' %}">Blog</a>
               </li>
               {% if user.is_authenticated %}
-                <li class="nav-item">
+               <li class="nav-item">
                   <a class="nav-link js-scroll active" href="{% url 'profile-page' %}">{{ user.username|capfirst }}</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll active" href="{% url 'create_post-page' %}">Create Post</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link js-scroll active" href="{% url 'logout-page' %}">Logout</a>
@@ -49,21 +46,23 @@
               <div class="row">
                 <div class="col-md-8">
                   <div class="box-shadow-full">
-                      {% for post in posts %}
-                          <div class="row">
-                            <div class="col-md-4 frame">
-                              <div class="img"><img src="{{ post.author.profile.image.url }}" class="img-fluid img-thumbnail" alt=""></div>
-                            </div>
-                            <div class="col-md-8">
-                              <div class="title-box-2">
-                                <h5 class="font-italic"><a href="#">{{ post.author }}</a></h5>
-                                <h3><a href="{% url 'post_detail-page' post.id %}">{{ post.title }}</a></h3>
-                                <p>{{ post.content }}</p>
-                                <p class="text-muted" >{{ post.date_posted|date:'D d, Y' }}</p>
-                              </div>
-                            </div>
-                          </div>
-                      {% endfor %}
+                    <div class="row">
+                      <div class="col-md-4 frame">
+                        <div class="img"><img src="{{ object.author.profile.image.url }}" class="img-fluid img-thumbnail" alt=""></div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="title-box-2">
+                          <h5 class="font-italic"><a href="">{{ object.author }}</a></h5>
+                          <h3>{{ object.title }}</h3>
+                          <p>{{ object.content }}</p>
+                          <p class="text-muted" >{{ object.date_posted|date:'g a d, Y' }}</p>
+                          {% if object.author == user%}
+                          <a class="btn btn-danger" href="{% url 'delete_post-page' object.id %}">Delete Post</a>
+                          <a class="btn btn-info" href="{% url 'update_post-page' object.id %}">Update Post</a>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <!-- sidebar -->
@@ -81,11 +80,7 @@
               </div>
             </div>
           </section>
-          <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'ME/img/overlay-bg.jpg' %})">
-              <div class="overlay-mf"></div>
-                {% include 'ME/footer.html' %}
-                  {% block messages %} {% endblock %}
-          </section>
+
         {% endblock content %}
 
 <!-- About Psotcard ends -->

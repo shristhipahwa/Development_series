@@ -1,6 +1,5 @@
 {% extends 'ME/base.html '%}
 {% load static %}
-{% load crispy_forms_tags %}
 
 <!-- title starts -->
           {% block title %}
@@ -16,12 +15,12 @@
           {% block navbar_list_of_routes %}
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link js-scroll active" href="{% url 'home-page' %}">Home</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link js-scroll active" href="{% url 'blog-page' %}">Blog</a>
               </li>
                   {% if user.is_authenticated %}
+                    <li class="nav-item">
+                      <a class="nav-link js-scroll active" href="{% url 'profile-page' %}">{{ user.username|capfirst }}</a>
+                    </li>
                     <li class="nav-item">
                       <a class="nav-link js-scroll active" href="{% url 'logout-page' %}">Logout</a>
                     </li>
@@ -46,23 +45,18 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="title-box-2">
-                            <h5 class="title-left">
-                              Register Here
-                            </h5>
+                            <h5 class="title-left">Delete Post</h5>
                           </div>
-                            <!-- Form starts -->
-
                           <form method="POST">
-                                {% csrf_token %}
-                                    {{ form|crispy }}
-
-                        <div class="col-md-12">
-                          <button type="submit" class="button button-a button-big button-rouded">Register</button>
-                        </div>
-                            <div>
-                                <p> Already A Member <a href="{% url 'login-page' %}">Login</a></p>
-                            </div>
-                        </form>
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                              <h2>Are You Sure you Want To DELETE The Post {{ object.title }}</h2>
+                              <div class="col-md-12">
+                                <button type="submit" class="btn btn-danger">DELETE</button>
+                                <a class="btn btn btn-secondary" href="{% url 'post_detail-page' object.id %}">Cancel</a>
+                              </div>
+                            </fieldset>
+                          </form>
                         </div>
                       </div>
                     </div>

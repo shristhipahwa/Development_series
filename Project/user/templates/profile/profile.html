@@ -21,16 +21,19 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link js-scroll active" href="{% url 'blog-page' %}">Blog</a>
-                    </li>
-                      {% if user.is_authenticated %}
+              </li>
+                  {% if user.is_authenticated %}
+                      <li class="nav-item">
+                        <a class="nav-link js-scroll active" href="{% url 'profile-page' %}">{{ user.username|capfirst }}</a>
+                      </li>
                       <li class="nav-item">
                         <a class="nav-link js-scroll active" href="{% url 'logout-page' %}">Logout</a>
                       </li>
-                    {% else %}
+                  {% else %}
                       <li class="nav-item">
                         <a class="nav-link js-scroll active" href="{% url 'login-page' %}">Login</a>
                       </li>
-                    {% endif %}
+                  {% endif %}
             </ul>
       {% endblock %}
 
