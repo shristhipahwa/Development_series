@@ -1,3 +1,4 @@
+
 {% extends 'ME/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
@@ -44,18 +45,13 @@
                     <div class="row">
                       <div class="col-md-4 frame">
                               <img src="{{ user.profile.image.url }}" class="img-fluid img-thumbnail" alt=""><br><br>
-                         <!-- row 1.2 -->
                               <div class="row">
                                 <div class="col-md-8 frame">
                                   <div class="about-me pt-4 pt-md-0">
                                     <div class="title-box-2">
-                                      <h5 class="title-left">
-                                        Profile
-                                      </h5>
+                                      <h5 class="title-left">Profile Info</h5>
                                     </div>
-                                    <h5 class="font-italic">
-                                      {{ user.username }}
-                                    </h5>
+                                    <h5 class="font-italic">{{ user.username }}</h5>
                                     <p class="font-weight-normal text-left">{{ user.email }}</p>
                                   </div>
                                 </div>
@@ -67,7 +63,7 @@
                             <form method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
                                     <fieldset class="form-group">
-                                        <legend>Profile Info</legend>
+                                        <legend>Profile Update</legend>
 
                                             {{ u_form|crispy }}
                                             {{ p_form|crispy }}
@@ -89,3 +85,5 @@
         {% endblock About_Postcard %}
 
 <!-- About Psotcard ends -->
+
+
