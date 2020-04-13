@@ -17,7 +17,7 @@
 
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link js-scroll active" href="{% url 'home-page' %}">Home</a>
+                <a class="nav-link js-scroll active" href="{% url 'blog-page' %}">Blog</a>
               </li>
               {% if user.is_authenticated %}
                 <li class="nav-item">
@@ -44,6 +44,13 @@
 
 <!-- About Postcars starts -->
        {% block content %}
+       <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="mb-3">Posts By -{{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
+          </div>
+        </div>
+      </div>
           <section id="about" class="about-mf sect-pt4 route">
             <div class="container">
               <div class="row">
@@ -85,7 +92,7 @@
             <div class="row">
               <div class="col-md-4"></div>
               <div class="col-md-4">
-                      <!-- paging here starts -->
+                <!-- paging here starts -->
                       {% include 'blog/paging.html' %}
                   {% block paging %} {% endblock %}
                     <!-- paging here ends -->

@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView
 from . import views
 
 urlpatterns = [
 
     path('', PostListView.as_view(), name = "blog-page"),
+    path('user/<str:username>', UserPostListView.as_view(), name = "user_post-page"),
     path('post/<int:pk>/', PostDetailView.as_view(), name = "post_detail-page"),
     path('post/new/', PostCreateView.as_view(), name = "create_post-page"),
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name="update_post-page"),

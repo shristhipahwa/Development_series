@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Post
+from django.contrib.auth.models import User
 from django.views.generic import (
                 ListView,
                 DetailView,
@@ -13,17 +14,30 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 # But there are class based views build by django that provides greater functionality
 # with mininmal coding and also save us a lot of headache
 
-def blog(request):
-    context = {
-    'posts' : Post.objects.all()
-    }
-    return render(request, 'blog/blog.html', context)
+#--------------------Not using this now using class based view----------------------
+# def blog(request):
+#     context = {
+#     'posts' : Post.objects.all()
+#     }
+#     return render(request, 'blog/blog.html', context)
 
 class PostListView(ListView):
     model = Post
     template_name = 'blog/blog.html' #<app>/<model>_<viewtype>.html
     context_object_name = 'posts' #variable we are looping on in templates
     ordering = ['-date_posted'] #'-'indicates reverse ordering
+    paginate_by = 4
+
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'blog/user_post.html' #<app>/<model>_<viewtype>.html
+    context_object_name = 'posts' #variable we are looping on in templates
+    paginate_by = 4
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
+
 
 
 class PostDetailView(DetailView):

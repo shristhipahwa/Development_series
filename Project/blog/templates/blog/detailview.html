@@ -52,7 +52,7 @@
                       </div>
                       <div class="col-md-8">
                         <div class="title-box-2">
-                          <h5 class="font-italic"><a href="">{{ object.author }}</a></h5>
+                          <h5 class="font-italic"><a href="{% url 'user_post-page' object.author.username %}">{{ object.author }}</a></h5>
                           <h3>{{ object.title }}</h3>
                           <p>{{ object.content }}</p>
                           <p class="text-muted" >{{ object.date_posted|date:'g a d, Y' }}</p>

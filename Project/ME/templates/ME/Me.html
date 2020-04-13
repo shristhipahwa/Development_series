@@ -49,10 +49,15 @@
       {% endblock %}
 
 <!-- navbar ends -->
+{% block content %}
+<!-- flash message starts-->
+      {% include 'ME/messages.html' %}
+      {% block messages %} {% endblock %}
 
+<!-- flash message ends -->
 
 <!-- Intro Skew Start -->
-         {% block content %}
+
           <div id="home" class="intro route bg-image" style="background-image: url({% static 'ME/img/intoblack.jpg' %})">
             <div class="overlay-itro"></div>
             <div class="intro-content display-table">
@@ -63,12 +68,9 @@
               </div>
             </div>
           </div>
-
 <!-- Intro Skew Star ends -->
 
-
 <!-- About Postcars starts -->
-
           <section id="about" class="about-mf sect-pt4 route">
             <div class="container">
               <div class="row">
@@ -89,7 +91,7 @@
                             A Learner, Philosopher, Believer.
                           </h5>
                             <p class="font-weight-light">
-                              Hey, This is Akshit.
+                              Beautiful as always, not me, YOU!.<br>
                               I start my day , whishing God for such a great life and prays for a much better day ahead. You can try too it works.
                           </p>
                            <p class="font-weight-light">
@@ -110,14 +112,9 @@
               </div>
             </div>
           </section>
-
-
 <!-- About Psotcard ends -->
 
-
-
 <!--/ Section Contact-Footer Star /-->
-
           <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'ME/img/overlay-bg.jpg' %})">
             <div class="overlay-mf"></div>
             <div class="container">
@@ -128,42 +125,28 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="title-box-2">
-                            <h5 class="title-left">
-                              Message Us
-                            </h5>
-                            <br>
+                            <h5 class="title-left"> Message Us</h5><br>
                             <form  method="POST">
-
                                 {% csrf_token %}
                                     {{ form|crispy }}
-
                             <div class="col-md-12">
                               <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
                             </div>
                             </form>
                           </div>
-                          <div>
-
-                          </div>
                         </div>
                         <div class="col-md-6">
                           <div class="title-box-2 pt-4 pt-md-0">
-                            <h5 class="title-left">
-                              Get in Touch
-                            </h5>
+                            <h5 class="title-left">Get in Touch</h5>
                           </div>
                           <div class="more-info">
-                            <h3>
-                            Want to get in touch? We'd love to hear from you. Here's how you can reach us.
-                            </h3>
+                            <h5>Want to get in touch? We'd love to hear from you. Here's how you can reach us.</h5>
                           </div>
                           <div class="socials">
                             <ul>
                               <li><a href="https://www.instagram.com/akshit_oneless"><span class="ico-circle"><i class="ion-social-instagram"></i></span></a></li>
                               <li><a href="https://twitter.com/akshitspirit"><span class="ico-circle"><i class="ion-social-twitter"></i></span></a></li>
-                              <li><a href="https://github.com/Goel-Akshit"><span class="ico-circle"><i class="ion-social-github"></i></span></a></li>
-
-                            </ul>
+                              <li><a href="https://github.com/Goel-Akshit"><span class="ico-circle"><i class="ion-social-github"></i></span></a></li>                            </ul>
                           </div>
                         </div>
                       </div>
@@ -173,9 +156,8 @@
               </div>
             </div>
                   {% include 'ME/footer.html' %}
-                  {% block messages %} {% endblock %}
+                  {% block footer %} {% endblock %}
           </section>
-        {% endblock %}
+
   <!--/ Section Contact-footer End /-->
-
-
+{% endblock %}
