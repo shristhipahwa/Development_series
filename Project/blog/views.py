@@ -56,7 +56,6 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    # template_name = 'blog/post_form.html' #since we have followed the default convention by naming the html == post_form.html no need to asign it.
     fields = ['title', 'content']
 
     def form_valid(self, form):
