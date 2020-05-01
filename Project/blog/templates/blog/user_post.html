@@ -47,7 +47,7 @@
        <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h1 class="mb-3">Posts By -{{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
+            <h2 class="headpost">Posts By - {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h2>
           </div>
         </div>
       </div>
@@ -55,23 +55,36 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-8">
-                  <div class="box-shadow-full">
+
                       {% for post in posts %}
-                          <div class="row">
-                            <div class="col-md-4 frame">
-                              <div class="img"><img src="{{ post.author.profile.image.url }}" class="img-fluid img-thumbnail" alt=""></div>
+                      <div class="box-shadow-full">
+                        <div class="row">
+                          <div class="col-md-2">
+                      <div class="frame">
+                      <div class="img"><img src="{{ post.author.profile.image.url }}" class="img-fluid img-thumbnail " alt="" style="height:60px; width:65px;"></div>
+                    </div>
+                        </div>
+
+                    <div class="col-md-10">
+                      <div class="title-box-2">
+                        <h5 class="font-italic"><a href="{% url 'user_post-page' post.author.username %}">{{ post.author }}</a></h5>
+                      </div>
+                        </div>
                             </div>
-                            <div class="col-md-8">
-                              <div class="title-box-2">
-                                <h5 class="font-italic"><a href="{% url 'user_post-page' post.author.username %}">{{ post.author }}</a></h5>
-                                <h3><a href="{% url 'post_detail-page' post.id %}">{{ post.title }}</a></h3>
-                                <p>{{ post.content }}</p>
-                                <p class="text-muted" >{{ post.date_posted|date:'D d, Y' }}</p>
-                              </div>
-                            </div>
-                          </div>
+                          <div class="title-box-2">
+                        <h3><a href="{% url 'post_detail-page' post.id %}">{{ post.title }}</a></h3>
+
+                        <p>{{ post.content }}</p>
+
+                        </div>
+
+                      <div class="date">
+                        <p class="text-muted" >{{ post.date_posted|date:'D d, Y' }}</p>
+                     </div>
+                    </div>
+                    
                       {% endfor %}
-                  </div>
+
                 </div>
                 <!-- sidebar -->
                 <div class="col-md-4">
