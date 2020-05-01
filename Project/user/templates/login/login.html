@@ -39,55 +39,49 @@
 <!-- navbar ends -->
 
 <!--/ Section Contact-Footer Star /-->
-        {% block content %}
-          <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'ME/img/overlay-bg.jpg' %})">
-            <div class="overlay-mf"></div>
-            <div class="container">
-              <div class="container">
-                  {% include 'ME/messages.html' %}
-                  {% block messages %} {% endblock %}
-              </div>
+{% block content %}
+  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'ME/img/overlay-bg.jpg' %})">
+    <div class="overlay-mf"></div>
+    <div class="container">
+      <div class="container">
+          {% include 'ME/messages.html' %}
+          {% block messages %} {% endblock %}
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+
+            <div id="contact" class="box-shadow-full" >
               <div class="row">
-                <div class="col-sm-12">
-                  <div class="contact-mf">
-                    <div id="contact" class="box-shadow-full">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="title-box-2">
-                            <h5 class="title-left">
-                              Login Here
-                            </h5>
-                          </div>
-                            <!-- Form starts -->
-
-                          <form method="POST">
-                                {% csrf_token %}
-                                    {{ form|crispy }}
-
-                        <div class="col-md-12">
-                          <button type="submit" class="button button-a button-big button-rouded">LOGIN</button>
-                        </div>
-                        <br>
-                        <div class="container">
-                            <div class="row">
-                              <div class="col-md-12">
-                                <p> Not A Member <a class="btn btn-secondary" href="{% url 'register-page' %}">Register</a></p>
-                              </div>
-                              <div class="col-md-12">
-                                <p> Forgot Password? <a class="btn btn-dark" href="{% url 'password_reset-page' %}">Reset</a></p>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                        </div>
-                      </div>
-                    </div>
+                <div class="col-md-6">
+                  <div class="title-box-2" ">
+                    <h6 class="title-left">
+                      Login Here
+                    </h6>
                   </div>
+                    <!-- Form starts -->
+
+                  <form method="POST">
+                        {% csrf_token %}
+                            {{ form|crispy }}
+
+                <div class="col-md-12" >
+                  <button type="submit" class="button button-a button-big button-rouded">LOGIN</button>
+                </div>
+
+                      <div class="log">
+                         <a  href="{% url 'register-page' %}">Register Yourself </a> .
+                         <a  href="{% url 'password_reset-page' %}">Forgot Password?</a>
+                      </div>
+
+
+                </form>
                 </div>
               </div>
             </div>
-          </section>
-        {% endblock %}
-  <!--/ Section Contact-footer End /-->
+          </div>
+        </div>
+      </div>
 
-
+  </section>
+{% endblock %}
+<!--/ Section Contact-footer End /-->

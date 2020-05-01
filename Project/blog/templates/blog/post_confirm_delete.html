@@ -40,7 +40,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-sm-12">
-                  <div class="contact-mf">
+
                     <div id="contact" class="box-shadow-full">
                       <div class="row">
                         <div class="col-md-6">
@@ -50,7 +50,7 @@
                           <form method="POST">
                             {% csrf_token %}
                             <fieldset class="form-group">
-                              <h2>Are You Sure you Want To DELETE The Post {{ object.title }}</h2>
+                            <h3>Are you sure you want to DELETE the post - {{ object.title }}</h3>
                               <div class="col-md-12">
                                 <button type="submit" class="btn btn-danger">DELETE</button>
                                 <a class="btn btn btn-secondary" href="{% url 'post_detail-page' object.id %}">Cancel</a>
@@ -63,9 +63,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+
           </section>
         {% endblock %}
   <!--/ Section Contact-footer End /-->
-
-
