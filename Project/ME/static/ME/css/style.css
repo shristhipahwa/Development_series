@@ -132,13 +132,18 @@ a:hover {
 .sect-mt4 {
   margin-top: 4rem;
 }
-
+.log{
+  font-weight:600;
+}
 /*--/ Title s /--*/
 
 .title-s {
   font-weight: 600;
   color: #1e1e1e;
   font-size: 1.1rem;
+}
+.headpost{
+  padding-top:20px;
 }
 
 /*--/ Title A /--*/
@@ -173,6 +178,7 @@ a:hover {
 .title-left {
   font-size: 2rem;
   position: relative;
+  margin-left: 15px;
 }
 
 .title-left:before {
@@ -186,6 +192,12 @@ a:hover {
 
 /*------/ Box /------*/
 
+.date{
+position: absolute;
+bottom: 0;
+right: 10px;
+text-align:right;
+}
 .box-pl2 {
   padding-left: 2rem;
 }
@@ -399,7 +411,15 @@ a:hover {
 /*======================================
 //--//-->   NAVBAR
 ======================================*/
+.nav-item a{
+  font-size: 18px;
+    font-weight: 500;
+}
 
+.navbar a:hover{
+  color: #fff;
+
+}
 .navbar-b {
   transition: all .5s ease-in-out;
   background-color: transparent;
@@ -1275,5 +1295,13 @@ footer .credits a {
 @media (max-width: 768px) {
   .back-to-top {
     bottom: 15px;
+  }
+
+}
+
+@media (max-width: 414px) {
+  .page {
+    padding-left:  45px;
+    padding-top:10px;
   }
 }
